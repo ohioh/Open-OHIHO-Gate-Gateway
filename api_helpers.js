@@ -24,7 +24,7 @@ return rep;
 };
 
 exports.postUserLocationsApi = async (userLocations)=>{
-  response = await axios.post(user_location_lat_url+"/"+locaiton,userLocations);
+  response = await axios.post(user_location_url+"/"+user_location_service,userLocations);
   const rep = await response.data;
   return rep;
 };
