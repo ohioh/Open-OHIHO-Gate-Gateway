@@ -10,8 +10,18 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaokat/ohioh_api_gateway_express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shaokat/ohioh_api_gateway_express/issues"
+  },
+  "homepage": "https://github.com/shaokat/ohioh_api_gateway_express#readme",
   "description": ""
 }

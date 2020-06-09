@@ -2,9 +2,9 @@ const express = require('express');
 const axios = require('axios')
 const app = express();
 app.use(express.json());
+require('dotenv').config()
 
-const api_helper = require('./api_helpers')
-const {getusers,postUsers} = require('./service')
+const {getusers,postUsers,postUserLocations,postUserLocationLat,postBluetoothEncounter} = require('./service')
 const gatewayPrefix = '/gateway/ohioh';
 
 app.get('/', (req, res) => {
@@ -14,5 +14,10 @@ app.get('/', (req, res) => {
 
 app.get(gatewayPrefix+'/users', getusers);
 app.post(gatewayPrefix+'/users', postUsers);
+app.post(gatewayPrefix+'/user_locations',postUserLocations);
+app.post(gatewayPrefix+'/user_location_latitude',postUserLocationLat);
+app.post(gatewayPrefix+'/bluetooth-encounter',postBluetoothEncounter);
 
-app.listen(3000, () => console.log('Listening on port 3000'));
+
+const port = process.env.PORT || 4000
+app.listen(port, () => console.log(`Listening on port ${port}`));
