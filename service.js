@@ -9,25 +9,27 @@ exports.getusers = async (req, res, next) => {
 }
 
 exports.postUsers = async (req, res, next) => {
-  const schema = {
-    user_id: Joi.string().min(3).required(),
-    first_name: Joi.string().alphanum().min(3).max(30).required(),
-    last_name: Joi.string().alphanum().min(3).max(30).required(),
-    age: Joi.number().integer().required(),
-    country: Joi.string().alphanum().min(3).max(30).required(),
-    is_infected: Joi.boolean().required(),
-    tracking_save_duration: Joi.number().integer().required(),
-    bluetooth_save_duration: Joi.number().integer().required(),
-    phone: Joi.string().required(),
-    zip_code: Joi.string().regex(/^\d{5}$/)
+  // const schema = {
+  //   user_id: Joi.string().required(),
+  //   first_name: Joi.string().allow(''),
+  //   last_name: Joi.string().allow(''),
+  //   age: Joi.number().integer(),
+  //   country: Joi.string().alphanum().max(30).allow(''),
+  //   is_infected: Joi.boolean().required(),
+  //   tracking_save_duration: Joi.number().integer().required(),
+  //   bluetooth_save_duration: Joi.number().integer().required(),
+  //   phone: Joi.string().allow(''),
+  //   zip_code: Joi.number().integer().allow('')
    
 
-  };
-  const result = Joi.validate(req.body, schema)
-  if(result.error){
-    res.status(400).send(result.error.details[0].message)
-    return;
-  }
+  // };
+  // const result = Joi.validate(req.body, schema)
+  // console.log("schdhfdhfd"+schema['age'])
+  // if(result.error){
+  //   res.status(400).send(result.error.details[0].message)
+  //   return;
+  // }
+
     const users = req.body;
     postUsersApi(users).then(response => {
         res.send(response)})
@@ -37,20 +39,20 @@ exports.postUsers = async (req, res, next) => {
 }
 
 exports.postUserLocations = async (req, res, next) =>{
-  const schema = {
-    user_id: Joi.string().min(3).required(),
-    location_id: Joi.string().required(),
-    splitted: Joi.boolean().required(),
-    location_type: Joi.number().integer().required(),
-    longitude: Joi.number().required(),
-    speed: Joi.number().integer().required(),
-    arrival: Joi.boolean().required()
-  };
-  const result = Joi.validate(req.body, schema)
-  if(result.error){
-    res.status(400).send(result.error.details[0].message);
-    return;
-  }
+  // const schema = {
+  //   user_id: Joi.string().min(3).required(),
+  //   location_id: Joi.string().required(),
+  //   splitted: Joi.boolean().required(),
+  //   location_type: Joi.number().integer().required(),
+  //   longitude: Joi.number().required(),
+  //   speed: Joi.number().integer().required(),
+  //   arrival: Joi.boolean().required()
+  // };
+  // const result = Joi.validate(req.body, schema)
+  // if(result.error){
+  //   res.status(400).send(result.error.details[0].message);
+  //   return;
+  // }
   const userLocations = req.body;
   postUserLocationsApi(userLocations).then(response => {
     res.send(response)
@@ -61,16 +63,16 @@ exports.postUserLocations = async (req, res, next) =>{
 }
 
 exports.postUserLocationLat = async (req, res, next) =>{
-  const schema = {
-    location_id: Joi.string().min(3).required(),
-    latitude: Joi.number().required(),
-    departure: Joi.boolean().required()
-  };
-  const result = Joi.validate(req.body, schema)
-  if(result.error){
-    res.status(400).send(result.error.details[0].message)
-    return;
-  }
+  // const schema = {
+  //   location_id: Joi.string().min(3).required(),
+  //   latitude: Joi.number().required(),
+  //   departure: Joi.boolean().required()
+  // };
+  // const result = Joi.validate(req.body, schema)
+  // if(result.error){
+  //   res.status(400).send(result.error.details[0].message)
+  //   return;
+  // }
   const userLocationLat = req.body;
   postUserLocationLatApi(userLocationLat).then(response => {
     res.send(response)
@@ -81,15 +83,15 @@ exports.postUserLocationLat = async (req, res, next) =>{
 }
 
 exports.postBluetoothEncounter = async (req, res, next) =>{
-  const schema = {
-    user_id: Joi.string().min(3).required(),
-    encounter_user_id: Joi.string().min(3).required()
-  };
-  const result = Joi.validate(req.body, schema)
-  if(result.error){
-    res.status(400).send(result.error.details[0].message)
-    return;
-  }
+  // const schema = {
+  //   user_id: Joi.string().min(3).required(),
+  //   encounter_user_id: Joi.string().min(3).required()
+  // };
+  // const result = Joi.validate(req.body, schema)
+  // if(result.error){
+  //   res.status(400).send(result.error.details[0].message)
+  //   return;
+  // }
   const bluetoothEncounter = req.body;
   postBluetoothEncounterApi(bluetoothEncounter).then(response => {
     res.send(response)
